@@ -19,6 +19,7 @@ gem 'jbuilder', '~> 2.5'      # Build JSON APIs with ease. Read more: https://gi
 # gem 'bcrypt', '~> 3.1.7'    # Use ActiveModel has_secure_password
 # gem 'therubyracer', platforms: :ruby
 gem 'haml-rails', '~> 0.9'    # Use HAML for the views
+gem 'bootstrap-sass', '~> 3.3.6'
 
 group :development, :test do
   gem 'pry'
