@@ -10,7 +10,7 @@
             .panel.panel-default
               .panel-heading
                 %h4= post.title
-              .panel-body= post.content
+              .panel-body= markdown(post.content)
               .panel-footer
                 = link_to 'Show', post, class: 'btn btn-primary'
                 = link_to 'Edit', edit_post_path(post), class: 'btn btn-info'
