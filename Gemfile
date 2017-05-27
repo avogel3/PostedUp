@@ -24,7 +24,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails', '~> 3.5'
-  gem 'faker'
+  gem 'faker', github: 'stympy/faker'
   gem 'factory_girl_rails'
 end
 

@@ -19,4 +19,19 @@ RSpec.describe Post, type: :model do
   it { is_expected.to have_db_column(:posted_date).of_type(:datetime) }
   it { is_expected.to have_db_column(:published)
         .of_type(:boolean).with_options(default: false) }
+
+  it "should have a valid public_post factory" do
+    post = build(:public_post)
+    expect(post).to be_valid
+    expect(post.published).to eq true
+    expect(post.posted_date).not_to be_nil
+  end
+  
+  it "should have a valid draft factory" do
+    post = build(:draft)
+    expect(post).to be_valid
+    expect(post.published).to eq false
+    expect(post.posted_date).to be_nil
+  end
+  
 end
