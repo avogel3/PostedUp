@@ -35,6 +35,7 @@ end
 group :development do
   gem 'guard'
   gem 'guard-rspec', require: false
+  gem 'guard-livereload', '~> 2.5', require: false
   gem 'annotate'
   gem 'hirb'
   gem 'better_errors'
