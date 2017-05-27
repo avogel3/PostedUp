@@ -13,14 +13,20 @@
 
 FactoryGirl.define do
   factory :public_post, class: Post do
-    title { Faker::Lorem.words(rand(9)) }
+    title { Faker::Lorem.sentence }
     content { Faker::Markdown.random }
     published true
     posted_date { Faker::Date.between(2.days.ago, Date.today) }
   end
 
   factory :draft, class: Post do
-    title { Faker::Lorem.words(rand(9)) }
+    title { Faker::Lorem.sentence }
     content { Faker::Markdown.random }
   end
+
+  factory :invalid_post, class: Post do
+    title nil
+    content nil
+  end
+  
 end
