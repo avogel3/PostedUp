@@ -20,6 +20,7 @@ gem 'jbuilder', '~> 2.5'      # Build JSON APIs with ease. Read more: https://gi
 # gem 'therubyracer', platforms: :ruby
 gem 'haml-rails', '~> 0.9'    # Use HAML for the views
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'simple_form'
 
 group :development, :test do
   gem 'pry'
