@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Seeding database....."
+
+20.times do |n|
+    puts "Creating post number #{n+1}"
+    FactoryGirl.create(:public_post)
+end
+
+puts "---------------------"
+puts "All Done!!"
