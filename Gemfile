@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.5'                # Build JSON APIs with ease. Read more: 
 gem 'haml-rails', '~> 0.9'              # Use HAML for the views
 gem 'bootstrap-sass', '~> 3.3.6'        # TWBS styles
 gem 'simple_form'                       # Simple Form Rails
+gem 'redcarpet'                         # Markdown Parser
 # gem 'redis', '~> 3.0'                 # Use Redis adapter to run Action Cable in production
 
 group :development, :test do
