@@ -1,19 +1,19 @@
-%h1 Listing posts
+.col-xs-12.col-sm-8.col-sm-offset-2
+  .container
+    .row
+      .col-xs-12.col-sm-8
+        .pull-right= link_to 'New Post', new_post_path, class: 'btn btn-success'
+        %h1 Listing posts
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
+        %div
+          - @posts.each do |post|
+            .panel.panel-default
+              .panel-heading
+                %h4= post.title
+              .panel-body= post.content
+              .panel-footer
+                = link_to 'Show', post, class: 'btn btn-primary'
+                = link_to 'Edit', edit_post_path(post), class: 'btn btn-info'
+                = link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
 
-  %tbody
-    - @posts.each do |post|
-      %tr
-        %td= link_to 'Show', post
-        %td= link_to 'Edit', edit_post_path(post)
-        %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Post', new_post_path
+                    
