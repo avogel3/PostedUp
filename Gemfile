@@ -33,6 +33,8 @@ group :test do
 end
 
 group :development do
+  gem 'guard'
+  gem 'guard-rspec', require: false
   gem 'annotate'
   gem 'hirb'
   gem 'better_errors'
