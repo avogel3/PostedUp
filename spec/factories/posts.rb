@@ -22,6 +22,7 @@ FactoryGirl.define do
   factory :draft, class: Post do
     title { Faker::Lorem.sentence }
     content { Faker::Markdown.random }
+    published false
   end
 
   factory :invalid_post, class: Post do
