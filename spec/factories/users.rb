@@ -34,6 +34,9 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password { "password" }
     password_confirmation { "InValid_PassW0Rd" }
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
+    preferred_timezone { ActiveSupport::TimeZone.all.map(&:name).sample }
   end
   
 end

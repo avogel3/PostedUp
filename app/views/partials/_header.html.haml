@@ -33,15 +33,19 @@
       %ul.nav.navbar-nav.navbar-right
         -# %li
         -#   %a{:href => "#"} Link
-        %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            (User Name Here)
-            %span.caret
-          %ul.dropdown-menu
-            %li= link_to 'Action', '#'
-            %li= link_to 'Another action', '#'
-            %li= link_to 'Something else here', '#'
-            %li.divider{:role => "separator"}
-            %li= link_to 'Separated link', '#'
+        - unless user_signed_in?
+          .hidden-xs= link_to 'Sign In', new_user_session_path, class: 'btn btn-success'
+        - if user_signed_in?
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              = current_user.display_name
+              %span.caret
+            %ul.dropdown-menu
+              - unless user_signed_in?
+                %li= link_to 'Sign In', new_user_session_path
+              %li= link_to 'Another action', '#'
+              %li= link_to 'Something else here', '#'
+              %li.divider{:role => "separator"}
+              %li= link_to 'Separated link', '#'
     / /.navbar-collapse
   / /.container-fluid
