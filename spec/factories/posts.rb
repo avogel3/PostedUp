@@ -10,6 +10,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  image       :string
+#  user_id     :integer
 #
 
 FactoryGirl.define do
@@ -18,14 +19,14 @@ FactoryGirl.define do
     content { Faker::Markdown.random }
     published true
     posted_date { Faker::Date.between(2.days.ago, Date.today) }
-    # image { Faker::File.file_name }
+    association :user
   end
 
   factory :draft, class: Post do
     title { Faker::Lorem.sentence }
     content { Faker::Markdown.random }
     published false
-    # image { Faker::File.file_name }
+    association :user
   end
 
   factory :invalid_post, class: Post do

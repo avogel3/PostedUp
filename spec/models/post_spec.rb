@@ -10,12 +10,12 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  image       :string
+#  user_id     :integer
 #
 
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  # Database design 
   it { is_expected.to have_db_column(:title).of_type(:string) }
   it { is_expected.to have_db_column(:content).of_type(:text) }
   it { is_expected.to have_db_column(:posted_date).of_type(:datetime) }
@@ -23,11 +23,11 @@ RSpec.describe Post, type: :model do
         .of_type(:boolean).with_options(default: false) }
   it { should have_db_column(:image).of_type(:string) }
   
-  # Validations
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:content) }
 
-  # Factories
+  it { should belong_to(:user) }
+
   it "should have a valid public_post factory" do
     post = build(:public_post)
     expect(post).to be_valid
