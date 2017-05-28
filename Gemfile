@@ -34,11 +34,15 @@ end
 
 group :test do
   gem 'shoulda-matchers', '~> 3.1'      # 1 line tests
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+  gem 'capybara-webkit'
 end
 
 group :development do
   gem 'guard'                           # Automate tests and page refeshes
   gem 'guard-rspec', require: false     # Run specs on file save
+  gem 'guard-cucumber'                  # Run features on file save
   gem 'guard-livereload', '~> 2.5', require: false # Hot reload rails server on view saves
   gem 'annotate'                        # Annotate models
   gem 'hirb'                            # Pretty Formatting for the console
