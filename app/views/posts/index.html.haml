@@ -10,7 +10,10 @@
             .panel.panel-default
               .panel-heading
                 %h4= post.title
-              .panel-body~ markdown(post.content)
+              .panel-body
+                - if post.image?
+                  %center= image_tag post.image.url, class: 'img-responsive'
+                ~ markdown(post.content)
               .panel-footer
                 = link_to 'Show', post, class: 'btn btn-primary'
                 = link_to 'Edit', edit_post_path(post), class: 'btn btn-info'
