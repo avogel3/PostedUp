@@ -7,5 +7,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %header= render 'partials/header'
+    %header
+      = render 'partials/header'
+      = render 'partials/devise_flash'
     %main= yield

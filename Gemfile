@@ -23,6 +23,7 @@ gem 'redcarpet'                         # Markdown Parser
 gem 'coderay'                           # Ruby Syntax Highlighting
 gem 'carrierwave', '~> 0.9'             # Handle Photo Uploads
 gem 'carrierwave-dropbox'               # Carrierwave adapter for Dropbox
+gem 'devise'                            # User Authentication
 
 group :development, :test do
   gem 'pry-rails'                       # Pry as rails console     
