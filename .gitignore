@@ -21,3 +21,6 @@
 
 # Ignore Uploads
 public/uploads
+
+# Ignore credentials
+dropbox.txt

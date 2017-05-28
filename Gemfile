@@ -22,6 +22,7 @@ gem 'redcarpet'                         # Markdown Parser
 # gem 'redis', '~> 3.0'                 # Use Redis adapter to run Action Cable in production
 gem 'coderay'                           # Ruby Syntax Highlighting
 gem 'carrierwave', '~> 0.9'             # Handle Photo Uploads
+gem 'carrierwave-dropbox'               # Carrierwave adapter for Dropbox
 
 group :development, :test do
   gem 'pry-rails'                       # Pry as rails console     
