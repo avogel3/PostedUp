@@ -20,6 +20,7 @@ gem 'bootstrap-sass', '~> 3.3.6'        # TWBS styles
 gem 'simple_form'                       # Simple Form Rails
 gem 'redcarpet'                         # Markdown Parser
 # gem 'redis', '~> 3.0'                 # Use Redis adapter to run Action Cable in production
+gem 'coderay'                           # Ruby Syntax Highlighting
 
 group :development, :test do
   gem 'pry-rails'                       # Pry as rails console     
