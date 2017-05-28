@@ -33,8 +33,10 @@ Feature:
         Then I should not see "Edit"
         Then I should not see "Destroy"
     
-    Scenario: Visitors should see the view post button
+    Scenario: Visitors should be able to view a post
         When a user creates a public post
         And I refresh the page
         Then I should see "View Post"
+        When I click "View Post"
+        Then I should not see "Edit"
     
