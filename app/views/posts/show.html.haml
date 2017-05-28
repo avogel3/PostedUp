@@ -4,7 +4,8 @@
       .col-xs-12.col-sm-8
         %p#notice= notice #vas is das
         %h1= @post.title
-        %p= markdown(@post.content)
+        %div~ markdown(@post.content)
+          
     .row
       = link_to 'Edit', edit_post_path(@post), class: 'btn btn-info'
       = link_to 'Back', posts_path, class: 'btn btn-default'
