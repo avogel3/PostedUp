@@ -1,5 +1,5 @@
 %nav.navbar.navbar-default
-  .container
+  .container-fluid
     / Brand and toggle get grouped for better mobile display
     .navbar-header
       %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
@@ -35,7 +35,7 @@
         -# %li
         -#   %a{:href => "#"} Link
         - unless user_signed_in?
-          .hidden-xs= link_to 'Sign In', new_user_session_path, class: 'btn btn-success'
+          .hidden-xs.padding-top-7px= link_to 'Sign In', new_user_session_path, class: 'btn btn-success'
         - if user_signed_in?
           %li.dropdown#user_menu
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
