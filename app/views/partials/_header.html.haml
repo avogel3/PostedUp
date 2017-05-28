@@ -16,8 +16,9 @@
           = link_to root_path do
             Activity Feed
             %span.sr-only (current)
-        %li
-          %a{:href => "#"} My Posts
+        - if current_user
+          %li
+            %a{:href => "#"} My Posts
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             Dropdown
@@ -36,7 +37,7 @@
         - unless user_signed_in?
           .hidden-xs= link_to 'Sign In', new_user_session_path, class: 'btn btn-success'
         - if user_signed_in?
-          %li.dropdown
+          %li.dropdown#user_menu
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
               = current_user.display_name
               %span.caret
