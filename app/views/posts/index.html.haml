@@ -1,26 +1,25 @@
-.col-xs-12.col-sm-8.col-sm-offset-2
-  .container
-    .row
-      .col-xs-12.col-sm-8
-        .pull-right= link_to 'New Post', new_post_path, class: 'btn btn-success' if current_user
-        %h1 Public Posts
+.container
+  .row
+    .col-xs-12.col-sm-8.col-sm-offset-2
+      .pull-right= link_to 'New Post', new_post_path, class: 'btn btn-success' if current_user
+      %h1 Public Posts
 
-        %div
-          - if @posts.any?
-            - @posts.each do |post|
-              .panel.panel-default
-                .panel-heading
-                  %h4= link_to post.title, post
-                .panel-body
-                  - if post.image?
-                    %center= image_tag post.image.url, class: 'img-responsive'
-                  ~ markdown(post.content)
-                .panel-footer
-                  = link_to 'View Post', post, class: 'btn btn-primary'
-                  - if current_user
-                    = link_to 'Edit', edit_post_path(post), class: 'btn btn-info'
-                    = link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
-          - else
-            %center
-              %h1 No posts yet..
-                    
+      %div
+        - if @posts.any?
+          - @posts.each do |post|
+            .panel.panel-default
+              .panel-heading
+                %h4= link_to post.title, post
+              .panel-body
+                - if post.image?
+                  %center= image_tag post.image.url, class: 'img-responsive'
+                ~ markdown(post.content)
+              .panel-footer
+                = link_to 'View Post', post, class: 'btn btn-primary'
+                - if current_user
+                  = link_to 'Edit', edit_post_path(post), class: 'btn btn-info'
+                  = link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
+        - else
+          %center
+            %h1 No posts yet..
+                  
