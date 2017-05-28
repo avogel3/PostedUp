@@ -9,6 +9,7 @@
 #  published   :boolean          default("false")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  image       :string
 #
 
 require 'rails_helper'
@@ -20,6 +21,7 @@ RSpec.describe Post, type: :model do
   it { is_expected.to have_db_column(:posted_date).of_type(:datetime) }
   it { is_expected.to have_db_column(:published)
         .of_type(:boolean).with_options(default: false) }
+  it { should have_db_column(:image).of_type(:string) }
   
   # Validations
   it { should validate_presence_of(:title) }
