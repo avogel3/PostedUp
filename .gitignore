@@ -18,3 +18,6 @@
 
 # Ignore trivial OSX files
 .DS_Store
+
+# Ignore Uploads
+public/uploads
