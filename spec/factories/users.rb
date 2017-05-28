@@ -28,7 +28,7 @@ FactoryGirl.define do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     preferred_timezone { ActiveSupport::TimeZone.all.map(&:name).sample }
-  end
+end
 
   factory :invalid_user, class: User do
     email { Faker::Internet.email }

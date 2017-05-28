@@ -32,6 +32,7 @@ FactoryGirl.define do
   factory :invalid_post, class: Post do
     title nil
     content nil
+    association :user
   end
   
 end
