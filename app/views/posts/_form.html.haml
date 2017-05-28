@@ -3,5 +3,8 @@
     = f.error_notification
     = f.input :title
     = f.input :content, input_html: { rows: 10 }
+    %center= image_tag @post.image.url, class: 'img-responsive' if @post.image?
     = f.file_field :image
-    = f.button :submit, class: 'btn btn-success'
+    = f.input :remove_image, as: :boolean,label: true, inline_label: 'Remove image'
+    .actions
+      = f.button :submit, class: 'btn btn-success'

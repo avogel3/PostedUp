@@ -4,8 +4,9 @@
       .col-xs-12.col-sm-8
         %p#notice= notice #vas is das
         %h1= @post.title
-        %div
-          %center= image_tag @post.image.url, class: 'img-responsive'
+        - if @post.image?
+          %div
+            %center= image_tag @post.image.url, class: 'img-responsive'
         %div~ markdown(@post.content)
           
     .row
