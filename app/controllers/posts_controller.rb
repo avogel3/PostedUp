@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.where(published: true)
+    @posts = Post.where(post_status: 2)
   end
 
   # GET /posts/1
@@ -69,6 +70,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.fetch(:post, {}).permit(:title, :content, :published, :posted_date, :image, :remove_image, :user_id)
+      params.fetch(:post, {}).permit(:title, :content, :post_status, :posted_date, :image, :remove_image, :user_id)
     end
 end
