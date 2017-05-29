@@ -7,13 +7,12 @@
         %div
           %center= image_tag @post.image.url, class: 'img-responsive'
       %div~ markdown(@post.content)
-        
+
   .row
     .col-xs-12.col-sm-8.col-sm-offset-2
       = link_to 'Back', posts_path, class: 'btn btn-default'
-      - if current_user && (current_user.id == @post.user_id)
-        = link_to 'Edit', edit_post_path(@post), class: 'btn btn-info'
-        = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
-        .pull-right
-          - unless @post.posted?
-            = link_to 'Publish Now', post_path(@post, post: { post_status: "posted" }), method: :put, class: 'btn btn-warning' 
+      = link_to 'Edit', edit_post_path(@post), class: 'btn btn-info'
+      = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+      .pull-right
+        - unless @post.posted?
+          = link_to 'Publish Now', post_path(@post, post: { post_status: "posted" }), method: :put, class: 'btn btn-warning'

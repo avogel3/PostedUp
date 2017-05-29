@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.0.3' 
+gem 'rails', '~> 5.0.3'
 
 gem 'pg', '~> 0.18'                     # Use postgresql as the database for Active Record
 gem 'puma', '~> 3.0'                    # Use Puma as the app server
@@ -24,9 +24,10 @@ gem 'coderay'                           # Ruby Syntax Highlighting
 gem 'carrierwave', '~> 0.9'             # Handle Photo Uploads
 gem 'carrierwave-dropbox'               # Carrierwave adapter for Dropbox
 gem 'devise'                            # User Authentication
+gem 'cancancan', '~> 1.10'              # User abilities
 
 group :development, :test do
-  gem 'pry-rails'                       # Pry as rails console     
+  gem 'pry-rails'                       # Pry as rails console
   gem 'rspec-rails', '~> 3.5'           # Specs as test framework
   gem 'faker', github: 'stympy/faker'   # Fake data
   gem 'factory_girl_rails'              # Test Factories
@@ -47,7 +48,7 @@ group :development do
   gem 'guard-livereload', '~> 2.5', require: false # Hot reload rails server on view saves
   gem 'annotate'                        # Annotate models
   gem 'hirb'                            # Pretty Formatting for the console
-  gem 'better_errors'                   # Exactly what it says 
+  gem 'better_errors'                   # Exactly what it says
   gem 'binding_of_caller'               # Provide REPL/IRB and stack trace
   gem 'listen', '~> 3.0.5'
   gem 'spring'
