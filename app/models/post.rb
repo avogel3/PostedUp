@@ -6,16 +6,16 @@
 #  title       :string
 #  content     :text
 #  posted_date :datetime
-#  published   :boolean          default("false")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  image       :string
 #  user_id     :integer
+#  post_status :integer
 #
 
 class Post < ApplicationRecord
     validates :title, :content, presence: true
     mount_uploader :image, ImageUploader
-
+    enum post_status: [ :draft, :post_later, :posted ]
     belongs_to :user
 end

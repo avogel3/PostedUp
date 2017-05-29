@@ -6,11 +6,11 @@
 #  title       :string
 #  content     :text
 #  posted_date :datetime
-#  published   :boolean          default("false")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  image       :string
 #  user_id     :integer
+#  post_status :integer
 #
 
 require 'rails_helper'
@@ -19,9 +19,8 @@ RSpec.describe Post, type: :model do
   it { is_expected.to have_db_column(:title).of_type(:string) }
   it { is_expected.to have_db_column(:content).of_type(:text) }
   it { is_expected.to have_db_column(:posted_date).of_type(:datetime) }
-  it { is_expected.to have_db_column(:published)
-        .of_type(:boolean).with_options(default: false) }
-  it { should have_db_column(:image).of_type(:string) }
+  it { is_expected.to have_db_column(:post_status).of_type(:integer) }
+  it { is_expected.to define_enum_for(:post_status).with([ :draft, :post_later, :posted ]) }
   
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:content) }
@@ -31,14 +30,14 @@ RSpec.describe Post, type: :model do
   it "should have a valid public_post factory" do
     post = build(:public_post)
     expect(post).to be_valid
-    expect(post.published).to eq true
+    expect(post.post_status).to eq "posted"
     expect(post.posted_date).not_to be_nil
   end
   
   it "should have a valid draft factory" do
     post = build(:draft)
     expect(post).to be_valid
-    expect(post.published).to eq false
+    expect(post.post_status).to eq "draft"
     expect(post.posted_date).to be_nil
   end
 
