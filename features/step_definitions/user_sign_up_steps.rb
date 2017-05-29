@@ -3,19 +3,19 @@ Given(/^I am on the (\w+) page$/) do |path|
 end
 
 When(/^I, (\w+) (\w+), fill out the sign_up form with user info$/) do |first_name, last_name|
-    expect(page).to have_content "Sign up"
-    fill_in "user[first_name]", with: first_name
-    fill_in "user[last_name]", with: last_name
-    fill_in "user[email]", with: Faker::Internet.email
-    
-    password = Faker::Internet.password(15)
-    fill_in "user[password]", with: password
-    fill_in "user[password_confirmation]", with: password
-    
-    preferred_timezone = ActiveSupport::TimeZone.all.map(&:name).sample
-    select preferred_timezone, from: "user[preferred_timezone]"
-    page.save_screenshot
-    click_on "Sign up"
+  expect(page).to have_content "Sign up"
+  fill_in "user[first_name]", with: first_name
+  fill_in "user[last_name]", with: last_name
+  fill_in "user[email]", with: Faker::Internet.email
+
+  password = Faker::Internet.password(15)
+  fill_in "user[password]", with: password
+  fill_in "user[password_confirmation]", with: password
+
+  preferred_timezone = ActiveSupport::TimeZone.all.map(&:name).sample
+  select preferred_timezone, from: "user[preferred_timezone]"
+  page.save_screenshot
+  click_on "Sign up"
 end
 
 Then(/^I should see "([^"]*)"$/) do |content|
