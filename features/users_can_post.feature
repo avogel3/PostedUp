@@ -20,6 +20,8 @@ Feature:
     And     I click "Publish Now"
     And     I click "Activity Feed"
     Then    I should see "New Ruby Post"
+    When    I click "New Ruby Post"
+    And     I should see post access options.
 
   @javascript
   Scenario: User edits a post
@@ -34,3 +36,10 @@ Feature:
     When    I create a draft post
     And     I click "Delete"
     Then    I should see "Post was successfully deleted."
+
+  @javascript
+  Scenario: User can access their post
+    When    I create a draft post
+    And     I click "My Posts"
+    And     I click "New Ruby Post"
+    Then    I should not see "You are not authorized to access this page."

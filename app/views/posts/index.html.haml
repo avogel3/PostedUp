@@ -16,7 +16,7 @@
                 ~ markdown(post.content)
               .panel-footer
                 = link_to 'View Post', post, class: 'btn btn-primary'
-                - if can? :access, @post
+                - if can? :access, post
                   = link_to 'Edit', edit_post_path(post), class: 'btn btn-info'
                   = link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
         - else

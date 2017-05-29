@@ -8,14 +8,6 @@ When(/^I fill out the login form with user info$/) do
   click_on "Log in"
 end
 
-Given(/^I click "([^"]*)"$/) do |text|
-  click_on text
-end
-
-Then(/^I should not see "([^"]*)"$/) do |content|
-  expect(page).not_to have_content(content)
-end
-
 When(/^I fill out the login form without password$/) do
   fill_in "user[email]", with: @user.email
   click_on "Log in"

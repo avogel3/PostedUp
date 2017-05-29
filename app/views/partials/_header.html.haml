@@ -32,6 +32,6 @@
               %li= link_to 'Another action', '#'
               %li= link_to 'Something else here', '#'
               %li.divider{:role => "separator"}
-              %li= link_to 'Separated link', '#'
+              %li= link_to 'Logout', destroy_user_session_path, method: :delete
     / /.navbar-collapse
   / /.container-fluid
