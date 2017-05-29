@@ -19,7 +19,7 @@ RSpec.describe Post, type: :model do
   it { is_expected.to have_db_column(:title).of_type(:string) }
   it { is_expected.to have_db_column(:content).of_type(:text) }
   it { is_expected.to have_db_column(:posted_date).of_type(:datetime) }
-  it { is_expected.to have_db_column(:post_status).of_type(:integer) }
+  it { is_expected.to have_db_column(:post_status).of_type(:integer).with_options(default: "draft") }
   it { is_expected.to define_enum_for(:post_status).with([ :draft, :post_later, :posted ]) }
   
   it { should validate_presence_of(:title) }
