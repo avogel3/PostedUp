@@ -1,7 +1,7 @@
 .container
   .row
     .col-xs-12.col-sm-8.col-sm-offset-2
-      .pull-right= link_to 'New Post', new_post_path, class: 'btn btn-success' if current_user
+      .pull-right= link_to 'New Post', new_post_path, class: 'btn btn-success' if can? :create, @post
       %h1 Public Posts
 
       %div
@@ -16,10 +16,9 @@
                 ~ markdown(post.content)
               .panel-footer
                 = link_to 'View Post', post, class: 'btn btn-primary'
-                - if current_user
+                - if can? :access, @post
                   = link_to 'Edit', edit_post_path(post), class: 'btn btn-info'
                   = link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
         - else
           %center
             %h1 No posts yet..
-                  

@@ -8,7 +8,7 @@
         %span.icon-bar
         %span.icon-bar
       = link_to 'PostedUp', root_path, class: 'navbar-brand'
-        
+
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
@@ -18,21 +18,7 @@
             %span.sr-only (current)
         - if current_user
           %li= link_to 'My Posts', my_posts_path
-        %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Dropdown
-            %span.caret
-          %ul.dropdown-menu
-            %li= link_to 'Action', '#'
-            %li= link_to 'Another action', '#'
-            %li= link_to 'Something else here', '#'
-            %li.divider{:role => "separator"}
-            %li= link_to 'Separated link', '#'
-            %li.divider{:role => "separator"}
-            %li= link_to 'One more separated link', '#'
       %ul.nav.navbar-nav.navbar-right
-        -# %li
-        -#   %a{:href => "#"} Link
         - unless user_signed_in?
           .hidden-xs.padding-top-7px= link_to 'Sign In', new_user_session_path, class: 'btn btn-success'
         - if user_signed_in?
