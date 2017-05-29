@@ -1,7 +1,8 @@
-.row
-  .col-xs-10.col-xs-offset-1
-    - flash.each do |type, msg|
-      .alert{class: "alert-#{type}"}
-        %a.close{"data-dismiss": "alert", href: "#"} ×
-        %ul
-          %li= msg
+.container
+  .row
+    .col-xs-10.col-xs-offset-1
+      - flash.each do |type, msg|
+        .alert{class: "alert-#{type}"}
+          %a.close{"data-dismiss": "alert", href: "#"} ×
+          %ul
+            %li= msg
