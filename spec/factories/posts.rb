@@ -25,7 +25,6 @@ FactoryGirl.define do
   factory :draft, class: Post do
     title { Faker::Lorem.sentence }
     content { Faker::Markdown.random }
-    post_status "draft"
     association :user
   end
 

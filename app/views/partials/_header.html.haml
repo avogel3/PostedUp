@@ -17,8 +17,7 @@
             Activity Feed
             %span.sr-only (current)
         - if current_user
-          %li
-            %a{:href => "#"} My Posts
+          %li= link_to 'My Posts', my_posts_path
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             Dropdown
