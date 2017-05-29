@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  # before_action :check_post_owner, only: [:edit, :update, :destroy]
   load_and_authorize_resource
 
   # GET /posts
@@ -77,11 +76,5 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.fetch(:post, {}).permit(:title, :content, :post_status, :posted_date, :image, :remove_image, :user_id)
-    end
-
-    def check_post_owner
-      if @post.user_id != current_user.id
-        redirect_to @post, alert: "You are not authorized to modify or view this post."
-      end
     end
 end
