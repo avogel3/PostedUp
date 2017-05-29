@@ -35,5 +35,9 @@ RSpec.describe PostsController, type: :routing do
       expect(:delete => "/posts/1").to route_to("posts#destroy", :id => "1")
     end
 
+    it "routes to #my_posts" do
+      expect(:get => "/my_posts").to route_to("posts#my_posts")
+    end
+
   end
 end
