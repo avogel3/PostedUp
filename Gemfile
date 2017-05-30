@@ -25,6 +25,7 @@ gem 'carrierwave', '~> 0.9'             # Handle Photo Uploads
 gem 'carrierwave-dropbox'               # Carrierwave adapter for Dropbox
 gem 'devise'                            # User Authentication
 gem 'cancancan', '~> 1.10'              # User abilities
+gem 'sidekiq'                           # Background job processor
 
 group :development, :test do
   gem 'pry-rails'                       # Pry as rails console
