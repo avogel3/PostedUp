@@ -25,7 +25,10 @@ gem 'carrierwave', '~> 0.9'             # Handle Photo Uploads
 gem 'carrierwave-dropbox'               # Carrierwave adapter for Dropbox
 gem 'devise'                            # User Authentication
 gem 'cancancan', '~> 1.10'              # User abilities
-gem 'sidekiq'                           # Background job processor
+gem 'momentjs-rails', '>= 2.9.0'        # Moment JS support for picker
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'resque'
+gem 'resque-scheduler'
 
 group :development, :test do
   gem 'pry-rails'                       # Pry as rails console

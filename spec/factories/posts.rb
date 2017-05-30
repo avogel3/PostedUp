@@ -33,5 +33,13 @@ FactoryGirl.define do
     content nil
     association :user
   end
-  
+
+  factory :scheduled_post, class: Post do
+    title { Faker::Lorem.sentence }
+    content { Faker::Markdown.random }
+    post_status "post_later"
+    posted_date { Faker::Date.between(2.days.ago, Date.today) }
+    association :user
+  end
+
 end
