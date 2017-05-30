@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   end
   root to: 'posts#index'
   get '/my_posts', to: 'posts#my_posts'
+
+  # Sidekiq Web Console
+  # require 'sidekiq/web'
+  # mount Sidekiq::Web => '/sidekiq'
 end

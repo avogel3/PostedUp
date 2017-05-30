@@ -24,3 +24,6 @@ public/uploads
 
 # Ignore credentials
 dropbox.txt
+
+# Ignore Redis Server
+dump.rdb
