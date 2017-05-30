@@ -1,7 +1,6 @@
 .container
   .row
     .col-xs-12.col-sm-8.col-sm-offset-2
-      %p#notice= notice #vas is das
       %h1= @post.title
       - if @post.image?
         %div
@@ -16,4 +15,4 @@
         = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
         .pull-right
           - unless @post.posted?
-            = link_to 'Publish Now', post_path(@post, post: { post_status: "posted" }), method: :put, class: 'btn btn-warning'
+            = link_to 'Post Now', post_path(@post, post: { post_status: "posted" }), method: :put, class: 'btn btn-warning'
