@@ -15,6 +15,7 @@
             %div~ markdown(@post.content)
         .hidden-xs= link_to 'Back', posts_path, class: 'btn btn-default'
 
+    - if can? :access, @post
       .col-xs-12.col-sm-4
         .panel.panel-default
           .panel-heading

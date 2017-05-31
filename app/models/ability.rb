@@ -5,12 +5,12 @@ class Ability
     alias_action :edit, :update, :destroy, :my_posts, to: :access
 
     if user
-      can :read, Post, user_id: user.id
-      can :read, Post, post_status: "posted"
+      can :read, Post
       can :create, Post
       can :access, Post, user_id: user.id
+      can :create, Comment
     else
-      can :read, Post, post_status: "posted"
+      can :read, Post
     end
   end
 end
