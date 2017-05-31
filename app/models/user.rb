@@ -25,10 +25,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  
+
   validates :first_name, :last_name, :preferred_timezone, presence: true
 
   has_many :posts
+  has_many :comments, through: :posts
 
   def display_name
     return "#{self.first_name} #{self.last_name}"

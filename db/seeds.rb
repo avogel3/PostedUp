@@ -8,9 +8,13 @@
 
 puts "Seeding database....."
 
-20.times do |n|
-    puts "Creating post number #{n+1}"
-    FactoryGirl.create(:public_post)
+5.times do |g|
+  puts "Creating user number #{User.count + 1}"
+  @user = FactoryGirl.create(:user)
+  5.times do |n|
+      puts "Creating post number #{Post.count + 1}"
+      @user.posts.create(FactoryGirl.attributes_for(:public_post))
+  end
 end
 
 puts "---------------------"

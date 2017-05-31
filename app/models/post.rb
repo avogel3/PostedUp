@@ -19,6 +19,7 @@ class Post < ApplicationRecord
     enum post_status: [ :draft, :post_later, :posted ]
     belongs_to :user
     after_save :enqueue_post_later_job, if: :post_later?
+    has_many :comments
 
   private
   def enqueue_post_later_job

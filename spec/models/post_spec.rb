@@ -22,10 +22,11 @@ RSpec.describe Post, type: :model do
   it { is_expected.to have_db_column(:post_status).of_type(:integer).with_options(default: "draft") }
   it { is_expected.to define_enum_for(:post_status).with([ :draft, :post_later, :posted ]) }
 
-  it { should validate_presence_of(:title) }
-  it { should validate_presence_of(:content) }
+  it { is_expected.to validate_presence_of(:title) }
+  it { is_expected.to validate_presence_of(:content) }
 
-  it { should belong_to(:user) }
+  it { is_expected.to belong_to(:user) }
+  it { is_expected.to have_many(:comments) }
 
   it "should have a valid public_post factory" do
     post = build(:public_post)
