@@ -50,3 +50,4 @@ Feature:
     And     I schedule it to post later
     Then    I should see "Post was successfully updated."
     And     the post should be added to the queue
+    And     the posted_date should match my time relative to my timezone

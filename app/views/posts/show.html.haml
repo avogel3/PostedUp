@@ -29,8 +29,7 @@
                   %h5 Publish Post Later
                   = simple_form_for @post do |f|
                     = f.error_notification
-                    .datetimepicker
-                      = f.input :posted_date, as: :string
+                    = f.input :posted_date, as: :string
                     = f.hidden_field :post_status, value: "post_later"
                     %hr
                     .actions

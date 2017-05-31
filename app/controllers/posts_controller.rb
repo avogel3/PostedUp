@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource
+  around_action :user_timezone, if: :current_user
 
   # GET /posts
   # GET /posts.json
@@ -76,5 +77,9 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.fetch(:post, {}).permit(:title, :content, :post_status, :posted_date, :image, :remove_image, :user_id)
+    end
+
+    def user_timezone
+      Time.use_zone(current_user.preferred_timezone) { yield }
     end
 end
