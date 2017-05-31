@@ -10,10 +10,14 @@ end
 
 When(/^a user creates a public post$/) do
   user = create(:user)
-  post = user.posts.create!(attributes_for(:public_post))
-  expect(Post.last.title).to eq post.title
+  @post = user.posts.create!(attributes_for(:public_post))
+  expect(Post.last.title).to eq @post.title
 end
 
 When(/^I refresh the page$/) do
   visit current_path
+end
+
+Then(/^I should see the post author$/) do
+  expect(page).to have_content @post.user.display_name
 end
