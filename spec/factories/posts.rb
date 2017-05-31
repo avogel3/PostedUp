@@ -18,7 +18,7 @@ FactoryGirl.define do
     title { Faker::Lorem.sentence }
     content { Faker::Markdown.random }
     post_status "posted"
-    posted_date { Faker::Date.between(2.days.ago, Date.today) }
+    posted_date { Time.zone.yesterday + 6.hours  }
     association :user
   end
 

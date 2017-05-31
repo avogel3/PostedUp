@@ -23,22 +23,15 @@ RSpec.describe PostsController, type: :controller do
 
   describe "GET #index" do
     it "assigns @posts as a list of published posts" do
-      published, draft =
-        @user.posts.create(attributes_for(:public_post)),
-        @user.posts.create(attributes_for(:draft))
+      published = @user.posts.create(attributes_for(:public_post))
+      @user.posts.create(attributes_for(:draft)) # creat draft post
       get :index, params: {}, session: valid_session
       expect(assigns(:posts)).to eq([published])
     end
 
-    it "renders the index template" do
-      get :index, params: {}, session: valid_session
-      expect(response).to render_template("index")
-    end
-
-    it "returns a success response" do
-      get :index, params: {}, session: valid_session
-      expect(response).to be_success
-    end
+    before { get :index }
+    it { is_expected.to render_template("index") }
+    it { is_expected.to respond_with(:success) }
   end
 
   describe "GET #show" do
@@ -138,19 +131,12 @@ RSpec.describe PostsController, type: :controller do
       another_user = create(:user)
       another_user.posts.create(attributes_for(:public_post))
       get :my_posts, params: {}, session: valid_session
-      expect(assigns(:posts)).to eq([ published, draft ])
+      expect(assigns(:posts)).to eq([ draft, published ])
     end
 
-    it "renders the my_posts template" do
-      get :my_posts, params: {}, session: valid_session
-      expect(response).to render_template("my_posts")
-    end
-    
-    it "returns a success response" do
-      post = @user.posts.create(valid_attributes)
-      get :my_posts, params: {}, session: valid_session
-      expect(response).to be_success
-    end
+    before { get :my_posts }
+    it { is_expected.to render_template("my_posts") }
+    it { is_expected.to respond_with(:success)}
   end
-  
+
 end
