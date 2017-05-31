@@ -18,9 +18,11 @@ class Post < ApplicationRecord
     mount_uploader :image, ImageUploader
     enum post_status: [ :draft, :post_later, :posted ]
     belongs_to :user
+    after_save :enqueue_post_later_job, if: :post_later?
 
-    def self.schedule_post_job post
-      PostLaterJob.set(wait_until: post.posted_date).perform_later(post_id)
-    end
-      
+  private
+  def enqueue_post_later_job
+    PostLaterJob.set(wait_until: self.posted_date).perform_later(self.id)
+  end
+
 end

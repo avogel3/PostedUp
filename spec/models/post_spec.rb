@@ -48,5 +48,8 @@ RSpec.describe Post, type: :model do
     expect(post.posted_date).to be_nil
   end
 
-
+  it "adds a job to the queue if the post is a scheduled_post" do
+    create(:scheduled_post)
+    expect(enqueued_jobs.size).to eq 1
+  end
 end
