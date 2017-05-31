@@ -1,6 +1,6 @@
 @posts
 Feature:
-  Users should be able to add, update, and delete their own posts.
+  Users should be able to add, update, delete, and schedule their own posts.
 
   Background:
     Given   I, John Smith, am a user
@@ -17,7 +17,7 @@ Feature:
   @javascript
   Scenario: User creates a public post
     When    I create a draft post
-    And     I click "Publish Now"
+    And     I click "Post Now"
     And     I click "Activity Feed"
     Then    I should see "New Ruby Post"
     When    I click "New Ruby Post"
@@ -43,3 +43,10 @@ Feature:
     And     I click "My Posts"
     And     I click "New Ruby Post"
     Then    I should not see "You are not authorized to access this page."
+
+  @javascript @publish
+  Scenario: User can schedule a post publishing
+    When    I create a draft post
+    And     I schedule it to post later
+    Then    I should see "Post was successfully updated."
+    And     the post should be added to the queue

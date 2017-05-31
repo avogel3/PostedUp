@@ -62,3 +62,7 @@ Capybara.javascript_driver = :webkit
 # Factory Girl Shorthand syntax
 World(FactoryGirl::Syntax::Methods)
 
+# Active Job Test Helpers
+World(ActiveJob::TestHelper)
+
+ActiveJob::Base.queue_adapter = :test

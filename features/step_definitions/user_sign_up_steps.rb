@@ -1,7 +1,3 @@
-Given(/^I am on the (\w+) page$/) do |path|
-  visit eval("#{path}_path")
-end
-
 When(/^I, (\w+) (\w+), fill out the sign_up form with user info$/) do |first_name, last_name|
   expect(page).to have_content "Sign up"
   fill_in "user[first_name]", with: first_name
@@ -16,10 +12,6 @@ When(/^I, (\w+) (\w+), fill out the sign_up form with user info$/) do |first_nam
   select preferred_timezone, from: "user[preferred_timezone]"
   page.save_screenshot
   click_on "Sign up"
-end
-
-Then(/^I should see "([^"]*)"$/) do |content|
-  expect(page).to have_content content
 end
 
 When(/^I fill out the sign_up form with invalid_user info$/) do

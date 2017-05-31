@@ -24,8 +24,8 @@
                 = simple_form_for @post do |f|
                   = f.error_notification
                   .datetimepicker
-                    = f.input :posted_date, as: :string, as: :datetime_picker,
-                input_html: { data: { date_options: { defaultDate: '12/25/2016'} } }
+                    = f.input :posted_date, as: :datetime_picker, input_html: { data: { date_options: { defaultDate: '12/25/2016'} } }
+                  = f.hidden_field :post_status, value: "post_later"
                   %hr
                   .actions
                     = f.button :submit, class: 'btn btn-success'
