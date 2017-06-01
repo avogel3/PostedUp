@@ -23,7 +23,7 @@
 public/uploads
 
 # Ignore credentials
-dropbox.sh
+secrets.sh
 
 # Ignore Redis Server
 dump.rdb

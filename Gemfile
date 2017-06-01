@@ -27,7 +27,8 @@ gem 'devise'                            # User Authentication
 gem 'cancancan', '~> 1.10'              # User abilities
 # gem 'momentjs-rails', '>= 2.9.0'        # Moment JS support for picker
 # gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
-gem 'sidekiq'
+gem 'sidekiq'                           # Queue adapter for Jobs
+gem 'koala'                             # Facebook API
 
 group :development, :test do
   gem 'pry-rails'                       # Pry as rails console
