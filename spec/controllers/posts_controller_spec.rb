@@ -22,11 +22,14 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "GET #index" do
-    it "assigns @posts as a list of published posts" do
-      published = @user.posts.create(attributes_for(:public_post))
-      @user.posts.create(attributes_for(:draft)) # creat draft post
+    before :each do
+      @published = @user.posts.create(attributes_for(:public_post))
+      @user.posts.create(attributes_for(:draft))
       get :index, params: {}, session: valid_session
-      expect(assigns(:posts)).to eq([published])
+    end
+
+    it "assigns @posts as a list of published posts" do
+      expect(assigns(:posts)).to eq([@published])
     end
 
     before { get :index }
@@ -35,26 +38,35 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "GET #show" do
-    it "returns a success response" do
+    before :each do
       post = @user.posts.create(valid_attributes)
       get :show, params: {id: post.to_param}, session: valid_session
-      expect(response).to be_success
     end
+
+    it "assigns @comment as a new comment" do
+      expect(assigns(:comment)).to be_a_new(Comment)
+    end
+
+    it { is_expected.to respond_with(:success) }
   end
 
   describe "GET #new" do
-    it "returns a success response" do
-      get :new, params: {}, session: valid_session
-      expect(response).to be_success
+    before { get :new, params: {}, session: valid_session }
+
+    it "assigns @post as a new post" do
+      expect(assigns(:post)).to be_a_new(Post)
     end
+
+    it { is_expected.to respond_with(:success) }
   end
 
   describe "GET #edit" do
-    it "returns a success response" do
+    before :each do
       post = @user.posts.create(valid_attributes)
       get :edit, params: {id: post.to_param}, session: valid_session
-      expect(response).to be_success
     end
+
+    it { is_expected.to respond_with(:success) }
   end
 
   describe "POST #create" do
@@ -124,17 +136,18 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "GET#my_posts" do
-    it "assigns @posts as a list of the users posts" do
-      published, draft =
-        @user.posts.create(attributes_for(:public_post)),
-        @user.posts.create(attributes_for(:draft))
+    before :each do
+      @user.posts.create(attributes_for(:public_post))
+      @user.posts.create(attributes_for(:draft))
       another_user = create(:user)
       another_user.posts.create(attributes_for(:public_post))
       get :my_posts, params: {}, session: valid_session
-      expect(assigns(:posts)).to eq([ draft, published ])
     end
 
-    before { get :my_posts }
+    it "assigns @posts as a list of the users posts" do
+      expect(assigns(:posts)).to eq(@user.posts)
+    end
+
     it { is_expected.to render_template("my_posts") }
     it { is_expected.to respond_with(:success)}
   end

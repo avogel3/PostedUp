@@ -10,7 +10,7 @@
 #  updated_at  :datetime         not null
 #  image       :string
 #  user_id     :integer
-#  post_status :integer
+#  post_status :integer          default("0")
 #
 
 require 'rails_helper'

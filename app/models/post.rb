@@ -10,7 +10,7 @@
 #  updated_at  :datetime         not null
 #  image       :string
 #  user_id     :integer
-#  post_status :integer
+#  post_status :integer          default("0")
 #
 
 class Post < ApplicationRecord
@@ -19,7 +19,7 @@ class Post < ApplicationRecord
     enum post_status: [ :draft, :post_later, :posted ]
     belongs_to :user
     after_save :enqueue_post_later_job, if: :post_later?
-    has_many :comments
+    has_many :comments, dependent: :destroy
 
   private
   def enqueue_post_later_job
