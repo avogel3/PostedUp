@@ -1,4 +1,4 @@
-# PostedUp
+# PostedUp 😎📲
 
 ### Project Stack
 
@@ -10,10 +10,9 @@
 * **Authentication:** Devise & CanCanCan
 * **Image Uploads:** Carrierwave & Dropbox
 
+### Processing Jobs 🤺
 
-### Processing Jobs
-
-##### Start workers/queue with:
+##### Start workers/Queue with:
 
 ``` ruby
 rails s
@@ -29,3 +28,8 @@ redis-server
 ``` ruby
 bundle exec sidekiq
 ```
+
+
+### Social Media Posts 📟
+
+In Production, this app automatically links posts to the PostedUp Community Page on Facebook.
