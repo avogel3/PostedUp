@@ -33,7 +33,7 @@ class Post < ApplicationRecord
   end
 
   def post_to_social_media
-    link_url = post_url(self, host: ENV['HOST_URL'])
+    link_url = post_url(self, host: Rails.application.secrets.host_url)
     SocialMedia.post_to_wall(link_url)
   end
 end
