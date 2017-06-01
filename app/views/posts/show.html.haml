@@ -28,6 +28,7 @@
                     %h5 Publish Post Later
                     = simple_form_for @post do |f|
                       = f.error_notification
+                      %p Format Example - Jan 1, 2017 12:34
                       = f.input :posted_date, as: :string
                       = f.hidden_field :post_status, value: "post_later"
                       %hr
