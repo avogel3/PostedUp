@@ -22,6 +22,12 @@ Feature:
     Then    I should not see "You are not authorized to access this page."
     And     I should see "War and Peace"
 
+  @javscript
+  Scenario: Users cannot view another user's draft post
+    When    another user has a draft post titled "War and Peace, Cont."
+    And     I try to view the post "War and Peace, Cont."
+    Then    I should see "You are not authorized to access this page."
+
   @javascript @comments
   Scenario: Users can comment on another user's post.
     When    I try to view the post "War and Peace"

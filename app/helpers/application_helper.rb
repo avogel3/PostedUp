@@ -20,6 +20,10 @@ module ApplicationHelper
         return markdown.render(text).html_safe
     end
 
+    def parse_time_for_post post
+       return Time.use_zone(post.user.preferred_timezone) { post.posted_date.strftime("%b %d %Y %H:%M %Z") }
+    end    
+
     private
     class CodeRaySyntaxHighlight < Redcarpet::Render::HTML
         # Monkey patch block_code method of RedCarpet to inject syntax highlighting on render

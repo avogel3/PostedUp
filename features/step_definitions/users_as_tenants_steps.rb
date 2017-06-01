@@ -1,6 +1,6 @@
 Given(/^another user has a post titled "([^"]*)"$/) do |title|
-  user = create(:user)
-  user.posts.create(attributes_for(:public_post, title: title))
+  @another_user = create(:user)
+  @another_user.posts.create(attributes_for(:public_post, title: title))
 end
 
 When(/^I try to edit the post "([^"]*)"$/) do |title|
@@ -28,4 +28,8 @@ Then(/^I should see my comment$/) do
   steps %Q{
     And    I should see "#{@comment}"
   }
+end
+
+When(/^another user has a draft post titled "([^"]*)"$/) do |title|
+  @another_user.posts.create(attributes_for(:draft, title: title))
 end
