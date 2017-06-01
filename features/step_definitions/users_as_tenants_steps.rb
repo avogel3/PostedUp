@@ -17,3 +17,15 @@ When(/^I try to view the post "([^"]*)"$/) do |title|
   post = Post.find_by_title(title)
   visit post_path(post)
 end
+
+When(/^I fill out the comment form$/) do
+  @comment = Faker::StarWars.quote
+  fill_in "comment[content]", with: @comment
+  click_on "Create Comment"
+end
+
+Then(/^I should see my comment$/) do
+  steps %Q{
+    And    I should see "#{@comment}"
+  }
+end

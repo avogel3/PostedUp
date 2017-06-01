@@ -22,6 +22,15 @@ Feature:
     Then    I should not see "You are not authorized to access this page."
     And     I should see "War and Peace"
 
-  @javascript
+  @javascript @comments
   Scenario: Users can comment on another user's post.
-    When
+    When    I try to view the post "War and Peace"
+    And     I fill out the comment form
+    Then    I should see "Your comment has been posted!"
+    And     I should see my comment
+
+  @javascript @comments
+  Scenario: Users cannot post an empty comment on another user's post
+    When    I try to view the post "War and Peace"
+    And     I click "Create Comment"
+    Then    I should see "Content can't be blank"
