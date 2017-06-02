@@ -39,7 +39,7 @@ class Post < ApplicationRecord
 
   def enqueue_post_to_social_job
     link_url = post_url(self, host: Rails.application.secrets.host_url)
-    PostToSocial.new.perform(link_url)
+    PostToSocialJob.new.perform(link_url)
   end
 
 end
