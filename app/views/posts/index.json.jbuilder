@@ -5,7 +5,3 @@ json.posts @posts do |post|
   json.image post.image_url
   json.content post.content
 end
-
-json.links do
-  json.pages! @posts, url: "#{Rails.application.secrets.host_url}/posts"
-end
