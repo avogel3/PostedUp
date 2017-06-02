@@ -6,4 +6,5 @@ json.posts @posts do |post|
   json.posted_date parse_time_for_post(post.posted_date, post.user.preferred_timezone)
   json.post_status post.post_status
   json.author post.user.display_name
+  json.image post.image_url
 end
