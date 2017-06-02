@@ -1,11 +1,11 @@
-json.posts do
-  json.pages! @posts do |post|
-    json.id post.id
-    json.title post.title
-    json.content post.content
-    json.posted_date parse_time_for_post(post.posted_date, post.user.preferred_timezone)
-    json.post_status post.post_status
-    json.author post.user.display_name
-    json.image post.image_url
-  end
+json.posts @posts do |post|
+  json.(post, :title, :content)
+  json.author post.user.display_name
+  json.posted_date parse_time_for_post(post.posted_date, post.user.preferred_timezone)
+  json.image post.image_url
+  json.content post.content
+end
+
+json.links do
+  json.pages! @posts, url: "#{Rails.application.secrets.host_url}/posts"
 end
