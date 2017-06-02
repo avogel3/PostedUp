@@ -144,7 +144,7 @@ RSpec.describe PostsController, type: :controller do
     end
 
     it "assigns @posts as a list of the users posts" do
-      expect(assigns(:posts)).to eq(@user.posts)
+      expect(assigns(:posts)).to eq(@user.posts.order("updated_at DESC"))
     end
 
     it { is_expected.to render_template("my_posts") }
