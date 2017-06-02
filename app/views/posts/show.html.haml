@@ -5,7 +5,9 @@
         .panel.panel-default
           .panel-heading
             %h2= @post.title
-            %span.label.label-default= @post.user.display_name if @post.user
+            %span.label.label-default.margin-right-10px= @post.user.display_name if @post.user
+            %span.label.label-default.margin-right-10px= parse_time_for_post(@post.updated_at, @post.user.preferred_timezone)
+
           .panel-body
             - if @post.image?
               %center= image_tag @post.image.url, class: 'img-responsive'
@@ -20,10 +22,10 @@
               %b Post Options
             .panel-body
               - if can? :access, @post
-                = link_to 'Edit', edit_post_path(@post), class: 'btn btn-info'
-                = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+                = link_to 'Edit', edit_post_path(@post), class: 'btn btn-info margin-right-10px'
+                = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger margin-right-10px'
                 - if @post.draft?
-                  %br= link_to 'Post Now', post_path(@post, post: { post_status: "posted", posted_date: Time.zone.now }), method: :put, class: 'btn btn-warning'
+                  %br= link_to 'Post Now', post_path(@post, post: { post_status: "posted", posted_date: Time.zone.now }), method: :put, class: 'btn btn-warning margin-right-10px'
                   %hr
                     %h5 Publish Post Later
                     = simple_form_for @post do |f|

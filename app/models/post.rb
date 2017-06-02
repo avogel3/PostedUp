@@ -14,6 +14,7 @@
 #
 
 class Post < ApplicationRecord
+  paginates_per 10
   include Rails.application.routes.url_helpers
   validates :title, :content, presence: true
   mount_uploader :image, ImageUploader

@@ -19,7 +19,6 @@ gem 'haml-rails', '~> 0.9'              # Use HAML for the views
 gem 'bootstrap-sass', '~> 3.3.6'        # TWBS styles
 gem 'simple_form'                       # Simple Form Rails
 gem 'redcarpet'                         # Markdown Parser
-# gem 'redis', '~> 3.0'                 # Use Redis adapter to run Action Cable in production
 gem 'coderay'                           # Ruby Syntax Highlighting
 gem 'carrierwave', '~> 0.9'             # Handle Photo Uploads
 gem 'carrierwave-dropbox'               # Carrierwave adapter for Dropbox
@@ -29,6 +28,9 @@ gem 'cancancan', '~> 1.10'              # User abilities
 # gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'sidekiq'                           # Queue adapter for Jobs
 gem 'koala'                             # Facebook API
+gem 'kaminari'                          # Pagination
+gem 'jbuilder_pagination', require: 'jbuilder/pagination'
+
 
 group :development, :test do
   gem 'pry-rails'                       # Pry as rails console
