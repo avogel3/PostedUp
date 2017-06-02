@@ -31,7 +31,7 @@ When(/^I create a draft post$/) do
   }
 end
 
-When(/^I should see post access options\.$/) do
+When(/^I should see post access options$/) do
   steps %Q{
     Then    I should see "Edit"
     And     I should see "Delete"

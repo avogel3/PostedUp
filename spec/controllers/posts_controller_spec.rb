@@ -32,7 +32,6 @@ RSpec.describe PostsController, type: :controller do
       expect(assigns(:posts)).to eq([@published])
     end
 
-    before { get :index }
     it { is_expected.to render_template("index") }
     it { is_expected.to respond_with(:success) }
   end

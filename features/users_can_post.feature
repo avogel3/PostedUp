@@ -14,14 +14,15 @@ Feature:
     When    I click "My Posts"
     Then    I should see "New Ruby Post"
 
-  @javascript
+  @javascript @time
   Scenario: User creates a public post
     When    I create a draft post
     And     I click "Post Now"
     And     I click "Activity Feed"
     Then    I should see "New Ruby Post"
     When    I click "New Ruby Post"
-    And     I should see post access options.
+    Then    I should see post access options
+    And     the posted date should not be nil
 
   @javascript
   Scenario: User edits a post
@@ -50,4 +51,4 @@ Feature:
     And     I schedule it to post later
     Then    I should see "Post was successfully updated."
     And     the post should be added to the queue
-    And     the posted_date should match my time relative to my timezone
+    And     the posted date should match my time relative to my timezone

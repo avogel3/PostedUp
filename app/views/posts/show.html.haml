@@ -23,7 +23,7 @@
                 = link_to 'Edit', edit_post_path(@post), class: 'btn btn-info'
                 = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
                 - if @post.draft?
-                  %br= link_to 'Post Now', post_path(@post, post: { post_status: "posted" }), method: :put, class: 'btn btn-warning'
+                  %br= link_to 'Post Now', post_path(@post, post: { post_status: "posted", posted_date: Time.zone.now }), method: :put, class: 'btn btn-warning'
                   %hr
                     %h5 Publish Post Later
                     = simple_form_for @post do |f|
