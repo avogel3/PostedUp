@@ -13,16 +13,16 @@ module ApplicationHelper
             lax_spacing: true,
             underline: true,
             highlight: true,
-            footnotes: true                               
+            footnotes: true
         }
-        
+
         markdown = Redcarpet::Markdown.new(renderer_with_syntax, optional_plugins)
         return markdown.render(text).html_safe
     end
 
-    def parse_time_for_post post
-       return Time.use_zone(post.user.preferred_timezone) { post.posted_date.strftime("%b %d %Y %H:%M %Z") }
-    end    
+    def parse_time_for_post posted_date, timezone
+       return Time.use_zone(timezone) { posted_date.strftime("%b %d %Y %H:%M %Z") }
+    end
 
     private
     class CodeRaySyntaxHighlight < Redcarpet::Render::HTML
