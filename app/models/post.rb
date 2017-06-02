@@ -23,6 +23,10 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   after_save :post_to_social_media, if: :production_and_posted?
 
+  def image_url
+    self.image.url
+  end
+
   private
   def enqueue_post_later_job
     PostLaterJob.set(wait_until: self.posted_date).perform_later(self.id)
@@ -36,4 +40,5 @@ class Post < ApplicationRecord
     link_url = post_url(self, host: Rails.application.secrets.host_url)
     SocialMedia.post_to_wall(link_url)
   end
+
 end

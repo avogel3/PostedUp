@@ -53,4 +53,13 @@ RSpec.describe Post, type: :model do
     create(:scheduled_post)
     expect(enqueued_jobs.size).to eq 1
   end
+
+  it "renders the image url for JBuilder Views" do
+    post = create(:public_post)
+    expect(post.image_url).to eq post.image.url
+  end
+
+  it "has a valid updated_post_content factory" do
+    expect(build(:updated_post_content)).to be_valid
+  end
 end

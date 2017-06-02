@@ -93,7 +93,7 @@ RSpec.describe PostsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        attributes_for(:public_post)
+        attributes_for(:updated_post_content)
       }
 
       it "updates the requested post" do

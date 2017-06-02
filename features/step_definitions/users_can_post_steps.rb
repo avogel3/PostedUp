@@ -1,8 +1,6 @@
 When(/^I create a public_post with title "([^"]*)"$/) do |title|
-  post = attributes_for(:draft, title: title)
-  post.each do |key, value|
-    eval("fill_in 'post[#{key}]', with: '#{value}'")
-  end
+  fill_in "post[title]", with: title
+  fill_in "post[content]", with: Faker::Markdown.random
   click_on "Create Post"
 end
 

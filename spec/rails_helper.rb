@@ -60,6 +60,12 @@ RSpec.configure do |config|
   # Add Controller Helper
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
+
+  config.after(:each) do
+    if Rails.env.test? || Rails.env.cucumber?
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
+    end
+  end
 end
 
 Shoulda::Matchers.configure do |config|
