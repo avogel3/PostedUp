@@ -22,7 +22,7 @@ class Post < ApplicationRecord
   belongs_to :user
   after_save :enqueue_post_later_job, if: :post_later?
   has_many :comments, dependent: :destroy
-  after_save :post_to_social_media, if: :production_and_posted?
+  after_save :enqueue_post_to_social_job, if: :production_and_posted?
 
   def image_url
     self.image.url
@@ -37,9 +37,9 @@ class Post < ApplicationRecord
     return (Rails.env.production? && self.posted?)
   end
 
-  def post_to_social_media
+  def enqueue_post_to_social_job
     link_url = post_url(self, host: Rails.application.secrets.host_url)
-    SocialMedia.post_to_wall(link_url)
+    PostToSocial.new.perform(link_url)
   end
 
 end
