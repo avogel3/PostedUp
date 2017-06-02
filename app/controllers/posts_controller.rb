@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.where(post_status: 2)
+    @posts = Post.where(post_status: 2).order('updated_at DESC')
   end
 
   # GET /posts/1
