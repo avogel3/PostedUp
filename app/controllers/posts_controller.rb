@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.where(post_status: 2).order('updated_at DESC').page params[:page]
+    @posts = Post.where(post_status: :posted).order('updated_at DESC').page params[:page]
   end
 
   # GET /posts/1
