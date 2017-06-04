@@ -9,6 +9,37 @@
 * **Front End:** HAML & SCSS (Bootstrap-Sass)
 * **Authentication:** Devise & CanCanCan
 * **Image Uploads:** Carrierwave & Dropbox
+* **Tests:** RSpec && Cucumber && Capybara-Webkit
+
+### Setting Up Your Environment
+
+### Assuming you have cloned the project and changed into it's directory:
+
+#### Install dependencies with:
+
+``` bash
+bundle install
+```
+
+#### Next, create the database and associated columns:
+
+``` bash
+rails db:create
+rails db:migrate
+```
+
+#### Populate the database with some fake data:
+
+``` bash
+rails db:seed
+```
+
+#### Run the app locally:
+
+``` bash
+rails server 
+```
+
 
 ### Processing Jobs 🤺
 
