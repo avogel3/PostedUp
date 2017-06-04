@@ -9,7 +9,7 @@
 * **Front End:** HAML & SCSS (Bootstrap-Sass)
 * **Authentication:** Devise & CanCanCan
 * **Image Uploads:** Carrierwave & Dropbox
-* **Tests:** RSpec && Cucumber && Capybara-Webkit
+* **Tests:** RSpec & Cucumber & Capybara-Webkit
 
 ### Setting Up Your Environment
 
