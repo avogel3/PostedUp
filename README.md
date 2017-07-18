@@ -21,17 +21,10 @@
 bundle install
 ```
 
-#### Next, create the database and associated columns:
+#### Create and seed the database. (Might wants to change the values in seeds.rb)
 
 ``` bash
-rails db:create
-rails db:migrate
-```
-
-#### Populate the database with some fake data:
-
-``` bash
-rails db:seed
+rake db:setup
 ```
 
 #### Run the app locally:
