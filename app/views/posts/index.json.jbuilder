@@ -1,7 +1,0 @@
-json.posts @posts do |post|
-  json.(post, :title, :content, :id)
-  json.author post.user.display_name
-  json.posted_date parse_time_for_post(post.posted_date, post.user.preferred_timezone)
-  json.image post.image_url
-  json.content post.content
-end
