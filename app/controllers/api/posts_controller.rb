@@ -4,71 +4,46 @@ class Api::PostsController < ApplicationController
   load_and_authorize_resource
   around_action :user_timezone, if: :current_user
 
-  # GET /posts
-  # GET /posts.json
   def index
     @posts = Post.where(post_status: :posted).order('updated_at DESC').page params[:page]
     render json: @posts
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
   def show
     @comments = @post.comments
     render json: @comments
   end
 
-  # GET /posts/new
-  def new
-    @post = current_user.posts.new
-  end
-
-  # GET /posts/1/edit
   def edit
+    render json: @post
   end
 
-  # POST /posts
-  # POST /posts.json
   def create
     @post = current_user.posts.new(post_params)
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      render json: @post
+    else
+      render json: { errors: @post.errors }, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update(post_params)
+      render json: @post
+    else
+      render json: { errors: @post.errors }, status: :unprocessable_entity
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully deleted.' }
-      format.json { head :no_content }
-    end
+    render json: { notice: 'Post deleted successfully.' }, status: :ok
   end
 
   def my_posts
     @posts = current_user.posts.order("updated_at DESC").page params[:page]
+    render json: @posts
   end
 
   private
