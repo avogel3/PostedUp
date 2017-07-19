@@ -6,7 +6,6 @@
 * **Rails:** 5.0.3
 * **Database:** postgresql
 * **Job Queue:** Sidekiq & Redis
-* **Front End:** HAML & SCSS (Bootstrap-Sass)
 * **Authentication:** Devise & CanCanCan
 * **Image Uploads:** Carrierwave & Dropbox
 * **Tests:** RSpec & Cucumber & Capybara-Webkit
@@ -57,7 +56,6 @@ bundle exec sidekiq
 In Production, this app automatically links posts to the [PostedUp Community Page on Facebook](https://www.facebook.com/PostedUp-App-Community-214327459084678/).
 
 
-
 ### API Requests 👾
 
-This app serves GET requests on /posts.json and /posts/1.json
+This app is being refactored to server api requests on the /api namespace.
