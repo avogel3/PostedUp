@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PostsController, type: :controller do
+RSpec.describe Api::PostsController, type: :controller do
 
   let(:valid_attributes) {
     [attributes_for(:public_post), attributes_for(:draft)].sample
@@ -32,7 +32,6 @@ RSpec.describe PostsController, type: :controller do
       expect(assigns(:posts)).to eq([@published])
     end
 
-    it { is_expected.to render_template("index") }
     it { is_expected.to respond_with(:success) }
   end
 
@@ -147,7 +146,6 @@ RSpec.describe PostsController, type: :controller do
       expect(assigns(:posts)).to eq(@user.posts.order("updated_at DESC"))
     end
 
-    it { is_expected.to render_template("my_posts") }
     it { is_expected.to respond_with(:success)}
   end
 

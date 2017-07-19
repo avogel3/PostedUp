@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class Api::PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource
@@ -8,13 +8,14 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.where(post_status: :posted).order('updated_at DESC').page params[:page]
+    render json: @posts
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @comment = Comment.new
     @comments = @post.comments
+    render json: @comments
   end
 
   # GET /posts/new
