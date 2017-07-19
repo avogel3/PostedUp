@@ -46,5 +46,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
+  def asset_host
+    return "http://localhost:3000"
+  end
 end
