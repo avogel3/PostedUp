@@ -10,8 +10,7 @@ class Api::PostsController < ApplicationController
   end
 
   def show
-    @comments = @post.comments
-    render json: @comments
+    render json: @post
   end
 
   def edit
