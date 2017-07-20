@@ -9,7 +9,7 @@ class PostSerializer < ActiveModel::Serializer
   end
 
   def posted_date
-    object.posted_date.strftime('%m/%d/%Y %l:%M %p')
+    object.posted_date.strftime('%m/%d/%Y %l:%M %p') if object.posted_date
   end
 
   def image
