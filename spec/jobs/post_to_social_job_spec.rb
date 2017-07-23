@@ -6,7 +6,7 @@ RSpec.describe PostToSocialJob, type: :job do
   before :each do
     user = create(:user)
     @post = user.posts.create(attributes_for(:draft))
-    @link_url = post_url(self, host: Rails.application.secrets.host_url)
+    @link_url = api_post_url(self, host: Rails.application.secrets.host_url)
   end
 
   describe "#perform_later" do
