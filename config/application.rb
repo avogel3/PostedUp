@@ -11,12 +11,15 @@ module PostedUp
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.api_only = true
     config.active_job.queue_adapter = :sidekiq
     config.time_zone = "Eastern Time (US & Canada)"
+
+    # Rack Cors Middleware
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :options]
+        resource '*', :headers => :any, :methods => [:get, :post, :delete, :put, :patch, :options, :head]
       end
     end
   end

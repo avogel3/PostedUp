@@ -1,6 +1,6 @@
-class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-  prepend_before_filter :get_auth_token
+class ApplicationController < ActionController::API
+  prepend_before_action :get_auth_token
+  include ActionController::Helpers
 
   def current_user
     @current_user ||= User.find_by_auth_token(params[:auth_token]) if params[:auth_token]
