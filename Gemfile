@@ -19,6 +19,7 @@ gem 'kaminari'                          # Pagination
 gem 'active_model_serializers', '~> 0.10.0' # Serialize Models to REST API
 gem 'rack-cors', :require => 'rack/cors'# Cross Origin Requests
 gem 'bcrypt'                            # has_secure_password
+gem 'decent_exposure', '3.0.0'          # Declaritive Controller Interfaces
 
 group :development, :test do
   gem 'pry-rails'                       # Pry as rails console
