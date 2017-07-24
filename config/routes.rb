@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-
+    resources :posts, only: [:index]
   end
 
   # Sidekiq Web Console

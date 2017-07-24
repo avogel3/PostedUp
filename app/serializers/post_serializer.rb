@@ -1,4 +1,5 @@
 class PostSerializer < ActiveModel::Serializer
+  include ApplicationHelper
   attributes :id, :title, :content, :posted_date
 
   def content
