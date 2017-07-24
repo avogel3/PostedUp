@@ -13,8 +13,6 @@ gem 'redcarpet'                         # Markdown Parser
 gem 'coderay'                           # Ruby Syntax Highlighting
 gem 'carrierwave', '~> 0.9'             # Handle Photo Uploads
 gem 'carrierwave-dropbox'               # Carrierwave adapter for Dropbox
-gem 'devise'                            # User Authentication
-gem 'cancancan', '~> 1.10'              # User abilities
 gem 'sidekiq'                           # Queue adapter for Jobs
 gem 'koala'                             # Facebook API
 gem 'kaminari'                          # Pagination

@@ -6,7 +6,7 @@
 * **Rails:** 5.0.3
 * **Database:** postgresql
 * **Job Queue:** Sidekiq & Redis
-* **Authentication:** Devise & CanCanCan
+* **Authentication:** 
 * **Image Uploads:** Carrierwave & Dropbox
 * **Tests:** RSpec & Cucumber & Capybara-Webkit
 
