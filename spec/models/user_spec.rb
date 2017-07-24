@@ -7,4 +7,7 @@ RSpec.describe User, type: :model do
     user = build(:user)
     expect(user).to be_valid
   end
+  it { is_expected.to respond_to(:auth_token) }
+  it { should validate_uniqueness_of(:email) }
+  it { should validate_presence_of(:email) }
 end
