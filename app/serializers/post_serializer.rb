@@ -1,6 +1,10 @@
 class PostSerializer < ActiveModel::Serializer
   include ApplicationHelper
-  attributes :id, :title, :content, :posted_date
+  attributes :id, :title, :content, :posted_date, :image
+
+  def image
+    object.image_url
+  end
 
   def content
     markdown(object.content) if object.content
