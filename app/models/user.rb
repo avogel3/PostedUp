@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
   validates :auth_token, uniqueness: true
   before_save :generate_auth_token
-
+  has_many :posts
   private
   def generate_auth_token
     if self.auth_token.blank?

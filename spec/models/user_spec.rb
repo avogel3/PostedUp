@@ -17,4 +17,5 @@ RSpec.describe User, type: :model do
     expect(user.auth_token).not_to be_nil
   end
   it { is_expected.to validate_uniqueness_of(:auth_token) }
+  it { is_expected.to have_many(:posts) }
 end
