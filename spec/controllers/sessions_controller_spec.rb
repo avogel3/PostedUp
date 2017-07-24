@@ -8,6 +8,9 @@ RSpec.describe SessionsController, type: :controller do
         post :create, params: { email: user.email, password: user.password }
       end
       it { is_expected.to respond_with(:success) }
+      it "returns the auth token" do
+        expect(JSON.parse(response.body)['data']['attributes']).to have_key('auth-token')
+      end
     end
 
     context "with invalid user credentials" do
