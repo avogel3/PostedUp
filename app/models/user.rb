@@ -29,7 +29,7 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :preferred_timezone, presence: true
 
   has_many :posts, dependent: :destroy
-  
+
   def display_name
     return "#{self.first_name} #{self.last_name}"
   end
