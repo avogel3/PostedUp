@@ -25,17 +25,11 @@ bundle install
 cp .env.sample .env
 ```
 
-#### Next, create the database and associated columns:
+#### Create and seed the database
 
 ``` bash
 rails db:create
-rails db:migrate
-```
-
-#### Populate the database with some fake data:
-
-``` bash
-rails db:seed
+rails db:populate
 ```
 
 #### Run the app locally:
