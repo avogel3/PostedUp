@@ -22,8 +22,8 @@
 # Ignore Uploads
 public/uploads
 
-# Ignore credentials
-secrets.sh
+# Ignore environment variables
+.env
 
 # Ignore Redis Server
 dump.rdb

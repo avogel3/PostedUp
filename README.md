@@ -13,12 +13,16 @@
 
 ### Setting Up Your Environment
 
-### Assuming you have cloned the project and changed into it's directory:
-
 #### Install dependencies with:
 
 ``` bash
 bundle install
+```
+
+#### Get the evironment variables. 
+
+```bash
+cp .env.sample .env
 ```
 
 #### Next, create the database and associated columns:
