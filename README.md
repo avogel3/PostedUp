@@ -15,7 +15,7 @@
 
 #### Install dependencies with:
 
-``` bash
+```bash
 bundle install
 ```
 
@@ -60,7 +60,6 @@ bundle exec sidekiq
 ### Social Media Posts 📟
 
 In Production, this app automatically links posts to the [PostedUp Community Page on Facebook](https://www.facebook.com/PostedUp-App-Community-214327459084678/).
-
 
 
 ### API Requests 👾
