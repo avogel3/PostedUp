@@ -31,6 +31,6 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   def display_name
-    return "#{self.first_name} #{self.last_name}"
+    "#{first_name} #{last_name}"
   end
 end
