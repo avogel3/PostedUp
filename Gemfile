@@ -50,7 +50,6 @@ group :test do
 end
 
 group :development do
-  gem 'annotate'                        # Annotate models
   gem 'better_errors'                   # Exactly what it says
   gem 'binding_of_caller'               # Provide REPL/IRB and stack trace
   gem 'guard'                           # Automate tests and page refeshes

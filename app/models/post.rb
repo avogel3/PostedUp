@@ -1,18 +1,3 @@
-# == Schema Information
-#
-# Table name: posts
-#
-#  id          :integer          not null, primary key
-#  title       :string
-#  content     :text
-#  posted_date :datetime
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  image       :string
-#  user_id     :integer
-#  post_status :integer          default("0")
-#
-
 class Post < ApplicationRecord
   include Rails.application.routes.url_helpers
 
