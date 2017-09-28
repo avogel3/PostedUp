@@ -3,6 +3,6 @@ class PostLaterJob < ApplicationJob
 
   def perform(post_id)
     post = Post.find(post_id)
-    post.update(post_status: "posted")
+    post.update(post_status: :posted)
   end
 end
