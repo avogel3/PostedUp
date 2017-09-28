@@ -2,8 +2,8 @@ FactoryGirl.define do
   factory :public_post, class: Post do
     title { Faker::Lorem.sentence }
     content { Faker::Markdown.random }
-    post_status "posted"
-    posted_date { Time.zone.yesterday + 6.hours  }
+    post_status 'posted'
+    posted_at { Time.zone.yesterday + 6.hours }
     association :user
     image { Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/support/placeholdit-450.png'))) }
   end
@@ -24,8 +24,8 @@ FactoryGirl.define do
   factory :scheduled_post, class: Post do
     title { Faker::Lorem.sentence }
     content { Faker::Markdown.random }
-    post_status "post_later"
-    posted_date { Faker::Date.between(2.days.ago, Date.today) }
+    post_status 'post_later'
+    posted_at { Faker::Date.between(2.days.ago, Date.today) }
     association :user
     image { Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/support/placeholdit-450.png'))) }
   end
@@ -35,5 +35,4 @@ FactoryGirl.define do
     content { Faker::Markdown.random }
     association :user
   end
-
 end

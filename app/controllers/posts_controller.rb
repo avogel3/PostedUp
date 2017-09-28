@@ -56,7 +56,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.fetch(:post, {}).permit(:title, :content, :post_status, :posted_date, :image, :remove_image, :user_id)
+    params.fetch(:post, {}).permit(:title, :content, :post_status, :posted_at, :image, :remove_image, :user_id)
   end
 
   def user_timezone

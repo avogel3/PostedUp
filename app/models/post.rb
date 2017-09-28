@@ -21,7 +21,7 @@ class Post < ApplicationRecord
   private
 
   def enqueue_post_later_job
-    PostLaterJob.set(wait_until: posted_date).perform_later(id)
+    PostLaterJob.set(wait_until: posted_at).perform_later(id)
   end
 
   def allow_social_post?
