@@ -47,6 +47,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   def asset_host
-    'http://localhost:3000'
+    ENV.fetch('HOST_URL')
   end
 end
