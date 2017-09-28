@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :preferred_timezone])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name preferred_timezone])
   end
 end

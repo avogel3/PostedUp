@@ -1,33 +1,24 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_post, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: %i[index show]
   load_and_authorize_resource
   around_action :user_timezone, if: :current_user
 
-  # GET /posts
-  # GET /posts.json
   def index
-    @posts = Post.where(post_status: :posted).order('updated_at DESC').page params[:page]
+    @posts = Post.where(post_status: :posted).order('updated_at DESC').page(params[:page])
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
   def show
     @comment = Comment.new
     @comments = @post.comments
   end
 
-  # GET /posts/new
   def new
     @post = current_user.posts.new
   end
 
-  # GET /posts/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /posts
-  # POST /posts.json
   def create
     @post = current_user.posts.new(post_params)
 
@@ -42,8 +33,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
       if @post.update(post_params)
@@ -56,8 +45,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post.destroy
     respond_to do |format|
@@ -67,21 +54,20 @@ class PostsController < ApplicationController
   end
 
   def my_posts
-    @posts = current_user.posts.order("updated_at DESC").page params[:page]
+    @posts = current_user.posts.order('updated_at DESC').page(params[:page])
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.fetch(:post, {}).permit(:title, :content, :post_status, :posted_date, :image, :remove_image, :user_id)
-    end
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    def user_timezone
-      Time.use_zone(current_user.preferred_timezone) { yield }
-    end
+  def post_params
+    params.fetch(:post, {}).permit(:title, :content, :post_status, :posted_date, :image, :remove_image, :user_id)
+  end
+
+  def user_timezone
+    Time.use_zone(current_user.preferred_timezone) { yield }
+  end
 end
