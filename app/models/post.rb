@@ -14,8 +14,8 @@ class Post < ApplicationRecord
   after_save :enqueue_post_later_job, if: :post_later?
   after_save :enqueue_post_to_social_job, if: :allow_social_post?
 
-  def image_url
-    image.url
+  def author
+    user.display_name
   end
 
   private

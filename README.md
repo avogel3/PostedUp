@@ -64,4 +64,4 @@ In Production, this app automatically links posts to the [PostedUp Community Pag
 
 ### API Requests 👾
 
-This app serves GET requests on /posts.json and /posts/1.json
+This app serves GET requests on `/api/posts` and `/api/posts/:id`

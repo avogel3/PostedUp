@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   around_action :user_timezone, if: :current_user
 
   def index
-    @posts = Post.where(post_status: :posted).order('updated_at DESC').page(params[:page])
+    @posts = Post.where(post_status: :posted).order(updated_at: :desc).page(params[:page])
   end
 
   def show
@@ -22,26 +22,18 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      redirect_to @post, notice: 'Post was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update(post_params)
+      redirect_to @post, notice: 'Post was successfully updated.'
+    else
+      render :edit
     end
   end
 
