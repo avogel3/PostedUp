@@ -5,8 +5,7 @@
         .panel-heading
           %h4= link_to post.title, post
           %span.label.label-default.margin-right-10px= post.user.display_name if post.user
-          %span.label.label-default.margin-right-10px= parse_time_for_post(post.updated_at, post.user.preferred_timezone)
-          %span.label.label-info.margin-right-10px= post.post_status.humanize
+          %span.post-datetime= parse_time_for_post(post.updated_at, post.user.preferred_timezone)
         .panel-body.post-index-panel
           - if post.image?
             %center= image_tag post.image.url, class: 'img-responsive'
