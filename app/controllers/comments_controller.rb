@@ -4,9 +4,9 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to post_path(params[:post_id]), notice: 'Your comment has been posted!'
+      redirect_to post_path(comment_params[:post_id]), notice: 'Your comment has been posted!'
     else
-      redirect_to post_path(params[:post_id]), alert: @comment.errors.full_messages.to_sentence
+      redirect_to post_path(comment_params[:post_id]), alert: @comment.errors.full_messages.to_sentence
     end
   end
 
